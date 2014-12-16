@@ -61,4 +61,4 @@ def plot_stl(filename, position=[0,0,1], viewAngle = 30, background = [1,1,1], o
     renderer.AddActor(actor)
     renderer.SetBackground(background[0], background[1], background[2])
     renderer.SetActiveCamera(myCamera)
-    vtk_show(renderer)
+    return vtk_show(renderer)
