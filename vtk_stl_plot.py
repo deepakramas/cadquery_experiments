@@ -42,13 +42,14 @@ def vtk_show(renderer, width=400, height=300):
     
     return Image(data)
 
-def plot_stl(filename, position=[0,0,1], viewAngle = 30, background = [1,1,1], opacity=0.25,width=400, height=300):
+def plot_stl(filename, position=[0,0,1], viewAngle = 30, azimuth=0.0,background = [1,1,1], opacity=0.25,width=400, height=300):
     """
     Plots stl files via vtk in Ipython
     """
     myCamera = vtk.vtkCamera()
     myCamera.SetViewAngle(viewAngle)
     myCamera.SetPosition(position[0],position[1],position[2])
+    myCamera.Azimuth(azimuth)
     mapper = vtk.vtkPolyDataMapper()
     mesh = loadSTL(filename)
     mapper.SetInput(mesh)
