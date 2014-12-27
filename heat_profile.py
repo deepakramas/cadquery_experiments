@@ -57,6 +57,6 @@ def main(n=2,holeCenterRadius=1.5):
     return createCircleWithHoles(n,holeCenterRadius)
 
 if __name__ == '__main__':
-    main():
+    main()
 
 
