@@ -25,6 +25,8 @@ def getPointsOnCircle(n,radius):
 # In[38]:
 
 def createCircleWithHoles(n,holeCenterRadius=1.5):
+    print n
+    print holeCenterRadius
     circleRadius = 2.0
     holeRadius = 0.25
     radius1 = holeCenterRadius - holeRadius
