@@ -14,7 +14,7 @@ from cadquery import *
 
 import numpy as np
 def getPointsOnCircle(n,radius):
-    angles = np.linspace(0,2*pi,n,False)
+    angles = np.linspace(0,2*np.pi,n,False)
     x = radius*cos(angles)
     y = radius*sin(angles)
     return zip(x,y)
@@ -56,7 +56,8 @@ def createCircleWithHoles(n,holeCenterRadius=1.5):
 def main(n=2,holeCenterRadius=1.5):
     return createCircleWithHoles(n,holeCenterRadius)
 
+import sys
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1],sys.argv[2])
 
 
