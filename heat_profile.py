@@ -29,7 +29,7 @@ def createCircleWithHoles(n,holeCenterRadius=1.5):
     holeRadius = 0.25
     radius1 = holeCenterRadius - holeRadius
     radius2 = holeRadius
-    maxNumCircles = 2*pi / np.arccos(((radius1+radius2)**2 - 2*radius2**2) / (radius1+radius2)**2) 
+    maxNumCircles = 2*np.pi / np.arccos(((radius1+radius2)**2 - 2*radius2**2) / (radius1+radius2)**2) 
     if n >= (maxNumCircles-1):
         print 'Max num circles possible = ' + str(maxNumCircles)
         return
@@ -49,7 +49,6 @@ def createCircleWithHoles(n,holeCenterRadius=1.5):
         print 'overlap with loft'
         return
     result = r.faces("Z>").circle(0.5).workplane(offset=0.25).circle(0.5).loft(combine=True)
-    filename = 'cyl_' + str(n) + '_' + str(holeCenterRadius) + '.STL'
     return exporters.toString(result,'STL')
 
 
