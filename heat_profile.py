@@ -15,8 +15,8 @@ from cadquery import *
 import numpy as np
 def getPointsOnCircle(n,radius):
     angles = np.linspace(0,2*np.pi,n,False)
-    x = radius*cos(angles)
-    y = radius*sin(angles)
+    x = radius*np.cos(angles)
+    y = radius*np.sin(angles)
     return zip(x,y)
 
 
