@@ -25,19 +25,17 @@ def getPointsOnCircle(n,radius):
 # In[38]:
 
 def createCircleWithHoles(n,holeCenterRadius=1.5):
-    print n
-    print holeCenterRadius
     circleRadius = 2.0
     holeRadius = 0.25
     radius1 = holeCenterRadius - holeRadius
     radius2 = holeRadius
     maxNumCircles = 2*np.pi / np.arccos(((radius1+radius2)**2 - 2*radius2**2) / (radius1+radius2)**2) 
     if n >= (maxNumCircles-1):
-        print 'Max num circles possible = ' + str(maxNumCircles)
-        return
+        return 'error:Max num circles possible = ' + str(maxNumCircles)
+        
     if (holeCenterRadius + holeRadius) >= (circleRadius-0.5):
-        print "circles do not fit into circle"
-        return
+        return "error:circles do not fit into circle"
+        
     pts = getPointsOnCircle(n,holeCenterRadius)
     r = Workplane("front").circle(circleRadius) # make base
     r = r.pushPoints(pts)     # points are on the stack
@@ -48,8 +46,7 @@ def createCircleWithHoles(n,holeCenterRadius=1.5):
     r2 = r2.extrude(extrudeDistance)
     r = r.cut(r2)
     if radius1 <= 0.6:
-        print 'overlap with loft'
-        return
+        return 'error:overlap with loft'
     result = r.faces("Z>").circle(0.5).workplane(offset=0.25).circle(0.5).loft(combine=True)
     return exporters.toString(result,'STL')
 
